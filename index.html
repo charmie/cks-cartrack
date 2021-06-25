@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CKS - Cartrack</title>
+
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+<body>
+
+  <div class="container-fluid">
+    <br /><hr /><br />
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+        
+        <button id="btn-generate-default" type="button" class="btn btn-block btn-sm btn-outline-info">
+          Generate Database Default Values
+        </button> 
+        <button type="button" class="btn btn-outline-info btn-sm btn-block">
+          Show API Endpoints
+        </button>
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div>
+    <br /><hr /><br />
+  </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script>
+      jQuery('#btn-generate-default').click(function(){
+        jQuery.ajax({
+          url: "setup_database.php",
+          type: "POST",
+          dataType: "application/json"
+        });
+      });
+    </script>
+  </body>
+</html>
