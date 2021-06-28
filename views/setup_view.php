@@ -2,6 +2,6 @@
 
 class SetupView {
     public function index() {
-        echo 'hello im the api';
+        echo 'hello im the view';
     }
 }
