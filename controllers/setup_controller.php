@@ -29,9 +29,7 @@ class SetupController {
             $result = pg_query($this->DB_CONNECTION, $query);
             
             if (!$result) {
-                echo "An error occurred.\n";
-                return false;
-                exit;
+                echo "DB Already exists.\n";
             }
 
             $arr = pg_fetch_array($result, 0, PGSQL_NUM);
