@@ -4,7 +4,7 @@ class SetupController {
     const DB_CONNECTION = null;
 
     public function __construct(){
-        $this->DB_CONNECTION = pg_connect('host=ec2-176-34-237-141.eu-west-1.compute.amazonaws.com dbname=public user=jljbzxjcxicvvn sslmode=require port=5432 password=f608bcd12574fc48e322dcc08ca5dc6829404f3cb598eb36812439392ad2b4d7');
+        $this->DB_CONNECTION = pg_connect('host=ec2-176-34-237-141.eu-west-1.compute.amazonaws.com dbname=d1b4oe0cmou81i user=jljbzxjcxicvvn sslmode=require port=5432 password=f608bcd12574fc48e322dcc08ca5dc6829404f3cb598eb36812439392ad2b4d7');
     }
 
     public function test(){
@@ -25,22 +25,17 @@ class SetupController {
     private function check_data(){
         // $query = "SELECT * FROM pg_catalog.pg_tables WHERE schemaname == 'd1b4oe0cmou81i'";
         //$query = 'SELECT datname FROM pg_database';
-        $query = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name;";
+        $query = "SELECT table_name
+        FROM information_schema.tables
+        WHERE table_schema = 'd1b4oe0cmou81i'
+        ORDER BY table_name;";
         $result = pg_query($this->DB_CONNECTION, $query);
         var_dump($result);
-        $arr = pg_fetch_all($result);
-        foreach( $arr as $db ) {
-            var_dump($db) . "<br />";
-        }
-
-        $query = 'SELECT  * from orders';
-        $result = pg_query($this->DB_CONNECTION, $query);
-        var_dump($result);
-        echo "------------------------------------------------------------------------------------------------------------------------------------------------------------";
         $arr = pg_fetch_all($result);
         foreach( $arr as $data ) {
             var_dump($data) . "<br />";
         }
+
     }
 
     /*
