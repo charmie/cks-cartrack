@@ -20,7 +20,9 @@ class SetupController {
             }
         } else {
             echo 'Connection status bad';
-        }    
+        }
+
+
     }
 
     private function create_schema(){
@@ -49,6 +51,7 @@ class SetupController {
                 return false;
             }
             var_dump(gettype($result));
+            var_dump($result);
             return true;
 
         } catch (Exception $e) {
