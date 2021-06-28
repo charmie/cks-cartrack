@@ -36,10 +36,8 @@ class SetupController {
         } catch (Exception $e) {
             echo json_encode('An error occurred');
             return false;
-        }
-        
-
-        
+        }       
+        echo "Did i still reach here?"; 
     }
 
     private function delete_schema(){
@@ -49,7 +47,6 @@ class SetupController {
             if (!$result) {
                 echo "An error occurred.\n";
                 return false;
-                exit;
             }
             var_dump(gettype($result));
             return true;
