@@ -14,17 +14,25 @@ class SetupController {
     public function setup_database(){
         $stat = pg_connection_status($this->DB_CONNECTION);
         if ($stat === PGSQL_CONNECTION_OK) {
-            $delete = $this->delete_schema();
-            if( $delete ){
-                $this->create_schema();
-            }
+            // $this->create_schema();
+            $this->check_data();
+
         } else {
             echo 'Connection status bad';
         }
+    }
 
+    private function check_data(){
+        $query = '\dt';
+        $result = pg_query($this->DB_CONNECTION, $query);
+        $arr = pg_fetch_all($result);
+        foreach( $arr as $db) {
+            var_dump($db) . "<br />";
+        }
 
     }
 
+    /*
     private function create_schema(){
         $query = 'CREATE SCHEMA cks_exam1';
         try {
@@ -41,14 +49,14 @@ class SetupController {
         }       
         echo "Did i still reach here?"; 
     }
-
+    
     private function delete_schema(){
         $query = 'SELECT datname FROM pg_database';
         try {
             $result = pg_query($this->DB_CONNECTION, $query);
             $arr = pg_fetch_all($result);
             foreach( $arr as $db) {
-                var_dump($db['datname']);
+                echo $db['datname']
             }
 
             if (!$result) {
@@ -63,4 +71,5 @@ class SetupController {
             return false;
         }
     }
+    */
 }
