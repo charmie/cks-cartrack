@@ -23,10 +23,12 @@ class SetupController {
     }
 
     private function check_data(){
-        $query = "SELECT *
+        /*$query = "SELECT *
         FROM pg_catalog.pg_tables
         WHERE schemaname != 'pg_catalog' AND 
-            schemaname != 'information_schema'";
+            schemaname != 'information_schema'"; */
+        $query = 'SELECT * FROM orders';
+
         $result = pg_query($this->DB_CONNECTION, $query);
         var_dump($result);
         $arr = pg_fetch_all($result);
@@ -53,7 +55,7 @@ class SetupController {
         }       
         echo "Did i still reach here?"; 
     }
-    
+   
     private function delete_schema(){
         $query = 'SELECT datname FROM pg_database';
         try {
