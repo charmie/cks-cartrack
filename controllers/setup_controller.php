@@ -46,12 +46,12 @@ class SetupController {
         $query = 'SELECT datname FROM pg_database';
         try {
             $result = pg_query($this->DB_CONNECTION, $query);
+            var_dump($result);
             if (!$result) {
                 echo "An error occurred.\n";
                 return false;
             }
-            var_dump(gettype($result));
-            var_dump($result);
+            
             return true;
 
         } catch (Exception $e) {
