@@ -46,7 +46,11 @@ class SetupController {
         $query = 'SELECT datname FROM pg_database';
         try {
             $result = pg_query($this->DB_CONNECTION, $query);
-            var_dump($result);
+            $arr = pg_fetch_all($result);
+            foreach( $i=0; $i<=count($arr)-1; $i++) {
+                echo $arr[$i] . "<br />";
+            }
+            
             if (!$result) {
                 echo "An error occurred.\n";
                 return false;
