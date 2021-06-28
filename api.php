@@ -1,6 +1,5 @@
 <?php
-echo "sup";
-/*
+
 $url = isset($_SERVER['PATH_INFO']) ? explode('/', ltrim($_SERVER['PATH_INFO'],'/')) : '/';
 
 if ($url == '/')
@@ -62,5 +61,5 @@ if ($url == '/')
         //Display its view
     }
 }
-*/
+
 ?>
