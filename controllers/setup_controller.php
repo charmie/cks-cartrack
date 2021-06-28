@@ -25,8 +25,9 @@ class SetupController {
     private function check_data(){
         $query = '\dt';
         $result = pg_query($this->DB_CONNECTION, $query);
+        var_dump($result);
         $arr = pg_fetch_all($result);
-        foreach( $arr as $db) {
+        foreach( $arr as $db ) {
             var_dump($db) . "<br />";
         }
 
