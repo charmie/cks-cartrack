@@ -23,17 +23,16 @@ class SetupController {
     }
 
     private function check_data(){
-        // $query = "SELECT * FROM pg_catalog.pg_tables WHERE schemaname == 'd1b4oe0cmou81i'";
-        //$query = 'SELECT datname FROM pg_database';
-        $query = "SELECT table_name
-        FROM information_schema.tables
-        WHERE table_schema = 'd1b4oe0cmou81i'";
+        $query = "SELECT *
+        FROM pg_catalog.pg_tables
+        WHERE schemaname != 'pg_catalog' AND 
+            schemaname != 'information_schema'";
         $result = pg_query($this->DB_CONNECTION, $query);
+        var_dump($result);
         $arr = pg_fetch_all($result);
-        foreach( $arr as $data ) {
+        foreach( $arr as $data) {
             var_dump($data) . "<br />";
         }
-        echo "TEST";
 
     }
 
