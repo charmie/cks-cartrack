@@ -27,16 +27,12 @@ class SetupController {
         //$query = 'SELECT datname FROM pg_database';
         $query = "SELECT table_name
         FROM information_schema.tables
-        WHERE table_schema = 'd1b4oe0cmou81i'
-        ORDER BY table_name;";
+        WHERE table_schema = 'd1b4oe0cmou81i'";
         $result = pg_query($this->DB_CONNECTION, $query);
-        var_dump($result);
-        /*
         $arr = pg_fetch_all($result);
         foreach( $arr as $data ) {
             var_dump($data) . "<br />";
         }
-        */
         echo "TEST";
 
     }
