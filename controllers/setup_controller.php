@@ -49,7 +49,7 @@ class SetupController {
                 echo "An error occurred.\n";
                 exit;
             }
-            var_dump(gettype($result))
+            var_dump(gettype($result));
             return true;
 
         } catch (Exception $e) {
