@@ -27,7 +27,7 @@ class SetupController {
         FROM pg_catalog.pg_tables
         WHERE schemaname != 'pg_catalog' AND 
             schemaname != 'information_schema'"; */
-        $query = 'SELECT * FROM orders';
+        $query = 'SELECT * FROM cars';
 
         $result = pg_query($this->DB_CONNECTION, $query);
         var_dump($result);
