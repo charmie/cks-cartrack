@@ -27,10 +27,18 @@ class SetupController {
         $query = 'CREATE SCHEMA cks_exam1';
         try {
             $result = pg_query($this->DB_CONNECTION, $query);
+            
             if (!$result) {
                 echo "An error occurred.\n";
+                return false;
                 exit;
             }
+
+            $arr = pg_fetch_array($result, 0, PGSQL_NUM);
+            var_dump($arr);
+            $searchDB = array_search('cks_exam1', $arr);
+            echo "-------------------------------------------";
+            var_dump*($searchDB);
             
         } catch (Exception $e) {
             echo json_encode('An error occurred');
