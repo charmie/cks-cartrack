@@ -47,8 +47,8 @@ class SetupController {
         try {
             $result = pg_query($this->DB_CONNECTION, $query);
             $arr = pg_fetch_all($result);
-            foreach( $arr as $dbname) {
-                echo $dbname . "<br />";
+            foreach( $arr as $db) {
+                var_dump($db);
             }
 
             if (!$result) {
