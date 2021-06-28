@@ -31,12 +31,7 @@ class SetupController {
             if (!$result) {
                 echo "DB Already exists.\n";
             }
-
-            $arr = pg_fetch_array($result, 0, PGSQL_NUM);
-            var_dump($arr);
-            $searchDB = array_search('cks_exam1', $arr);
-            echo "-------------------------------------------";
-            var_dump*($searchDB);
+            return true;
             
         } catch (Exception $e) {
             echo json_encode('An error occurred');
@@ -53,6 +48,7 @@ class SetupController {
             $result = pg_query($this->DB_CONNECTION, $query);
             if (!$result) {
                 echo "An error occurred.\n";
+                return false;
                 exit;
             }
             var_dump(gettype($result));
