@@ -30,11 +30,14 @@ class SetupController {
         $query = 'SELECT * FROM cars';
 
         $result = pg_query($this->DB_CONNECTION, $query);
-        var_dump($result);
+        // var_dump($result);
         $arr = pg_fetch_all($result);
         foreach( $arr as $data) {
-            var_dump($data) . "<br />";
+            // var_dump($data) . "<br />";
         }
+        $json = json_encode($arr);
+
+        echo $json;
 
     }
 
