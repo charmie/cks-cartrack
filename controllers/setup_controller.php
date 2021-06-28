@@ -12,25 +12,49 @@ class SetupController {
     }
 
     public function setup_database(){
-        
         $stat = pg_connection_status($this->DB_CONNECTION);
         if ($stat === PGSQL_CONNECTION_OK) {
-            $this->delete_schema();
+            $delete = $this->delete_schema();
+            if( $delete ){
+                $this->create_schema();
+            }
         } else {
             echo 'Connection status bad';
         }    
     }
 
+    private function create_schema(){
+        $query = 'CREATE SCHEMA cks_exam1';
+        try {
+            $result = pg_query($this->DB_CONNECTION, $query);
+            if (!$result) {
+                echo "An error occurred.\n";
+                exit;
+            }
+            
+        } catch (Exception $e) {
+            echo json_encode('An error occurred');
+            return false;
+        }
+        
+
+        
+    }
+
     private function delete_schema(){
         $query = 'SELECT datname FROM pg_database';
-        $result = pg_query($this->DB_CONNECTION, $query);
-        if (!$result) {
-            echo "An error occurred.\n";
-            exit;
-        }
+        try {
+            $result = pg_query($this->DB_CONNECTION, $query);
+            if (!$result) {
+                echo "An error occurred.\n";
+                exit;
+            }
+            var_dump(gettype($result))
+            return true;
 
-        while ($row = pg_fetch_row($result)) {
-            var_dump($row[0]);
+        } catch (Exception $e) {
+            echo json_encode('An error occurred');
+            return false;
         }
     }
 }
