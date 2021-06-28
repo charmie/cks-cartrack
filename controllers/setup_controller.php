@@ -23,7 +23,7 @@ class SetupController {
 
     private function delete_schema(){
         $query = 'SELECT datname FROM pg_database';
-        $result = pg_query(self::DB_CONNECTION, $query);
+        $result = pg_query($this->DB_CONNECTION, $query);
         if (!$result) {
             echo "An error occurred.\n";
             exit;
