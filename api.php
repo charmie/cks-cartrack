@@ -61,4 +61,5 @@ if ($url == '/')
         //Display its view
     }
 }
+
 ?>
