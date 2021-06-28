@@ -31,10 +31,13 @@ class SetupController {
         ORDER BY table_name;";
         $result = pg_query($this->DB_CONNECTION, $query);
         var_dump($result);
+        /*
         $arr = pg_fetch_all($result);
         foreach( $arr as $data ) {
             var_dump($data) . "<br />";
         }
+        */
+        echo "TEST";
 
     }
 
