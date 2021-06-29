@@ -21,6 +21,10 @@ class CarController extends CarModel{
     }
 
     public function read(){
+        echo $_SERVER['DOCUMENT_ROOT'];
+        echo "<br /> <hr />";
+        echo __DIR__;
+        echo "<br /> <hr />";
         $result = CarModel::all();
         if($result != false) {
             $data = array(
