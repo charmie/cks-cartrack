@@ -27,7 +27,8 @@ class CarModel extends DatabaseConnection{
                 $query = 'SELECT * FROM cars';
                 try{
                     $result = pg_query($this->DB_CONNECTION, $query);
-                    return pg_fetch_all($result);
+                    $arr = pg_fetch_all($result);
+                    // return pg_fetch_all($result);
                 } catch (Exception $e) {
                     return false;
                 }
