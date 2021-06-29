@@ -1,6 +1,6 @@
 <?php
 
-require($_SERVER['DOCUMENT_ROOT'].'/libraries/db_connection.php'); // local
+require($_SERVER['DOCUMENT_ROOT'].'/libraries/db_connection.php');
 
 class CarModel extends DatabaseConnection{
     const DB_CONNECTION = '';
@@ -10,9 +10,11 @@ class CarModel extends DatabaseConnection{
     }
 
     public function all(){
+        var_dump("called model all()");
         $this->dbconnect = new DatabaseConnection();
         $connect = $this->dbconnect->connect();
-        if( $connect == true ) {
+        if( $connect != false ) {
+            var_dump("yep here i am in true");
             if($connect != false) {
                 $query = 'SELECT * FROM cars';
                 try{
