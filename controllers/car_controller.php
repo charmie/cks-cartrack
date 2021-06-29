@@ -1,11 +1,5 @@
 <?php
 
-// require_once('../libraries/db_connection.php');
-//define('__ROOT__', dirname(dirname(__FILE__)));
-
-// require($_SERVER['DOCUMENT_ROOT'].'/PHP/cks-cartrack/libraries/db_connection.php');
-
-//vclass CarController extends DatabaseConnection{
 class CarController extends CarModel{
     const DB_CONNECTION = '';
 
@@ -21,11 +15,16 @@ class CarController extends CarModel{
     }
 
     public function read(){
-        echo $_SERVER['DOCUMENT_ROOT'];
-        echo "<br /> <hr />";
-        echo __DIR__;
-        echo "<br /> <hr />";
         $result = CarModel::all();
+        
+        echo "Yow this is the result";
+        echo "<br /><hr />";
+        var_dump($result);
+        echo "<br /><hr />";
+        echo "The Type:";
+        echo "<br /><hr />";
+        var_dump(gettype($result));
+
         if($result != false) {
             $data = array(
                 'data' => $data,
