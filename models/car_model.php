@@ -10,13 +10,20 @@ class CarModel extends DatabaseConnection{
     }
 
     public function all(){
-        var_dump("called model all()");
+        echo "called model all()";
+        echo "<br /><hr />";
         $this->dbconnect = new DatabaseConnection();
         $connect = $this->dbconnect->connect();
+        echo "yah!";
+        echo "<br /><hr />";
         var_dump($connect);
+        echo "<br /><hr />";
         if( $connect != false ) {
+            echo "connect in";
+            echo echo "<br /><hr />";
             var_dump("yep here i am in true");
             if($connect != false) {
+                echo "connect not false"
                 $query = 'SELECT * FROM cars';
                 try{
                     $result = pg_query($this->DB_CONNECTION, $query);
@@ -25,9 +32,13 @@ class CarModel extends DatabaseConnection{
                     return false;
                 }
             } else {
+                echo "else 2";
+                echo "<br /><hr />";
                 return false;
             }
         } else {
+            echo "else 1";
+            echo "<br /><hr />";
             return false;
         }
     }

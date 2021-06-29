@@ -16,8 +16,8 @@ class DatabaseConnection extends AppConfig{
                                         .' sslmode='.AppConfig::SSL_MODE
                                         .' password='.AppConfig::DB_PASSWORD;
             pg_connect($connectivity_string);
+            return true;
         } catch (Exception $e) {
-            var_dump($e);
             return false;
         }
     }
