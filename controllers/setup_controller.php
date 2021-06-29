@@ -14,8 +14,8 @@ class SetupController {
     public function setup_database(){
         $stat = pg_connection_status($this->DB_CONNECTION);
         if ($stat === PGSQL_CONNECTION_OK) {
-            $this->create_schema();
-            // $this->check_data();
+            //$this->create_schema();
+             $this->check_data();
 
         } else {
             echo 'Connection status bad';
