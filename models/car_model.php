@@ -23,7 +23,7 @@ class CarModel extends DatabaseConnection{
             echo  "<br /><hr />";
             var_dump("yep here i am in true");
             if($connect != false) {
-                echo "connect not false"
+                echo "connect not false";
                 $query = 'SELECT * FROM cars';
                 try{
                     $result = pg_query($this->DB_CONNECTION, $query);
