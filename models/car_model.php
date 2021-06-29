@@ -39,7 +39,7 @@ class CarModel extends Database{
         $values = array();
         foreach($_data as $key => $value) {
             array_push($columns,$key);
-            array_push($values,'"'.$value.'"');
+            array_push($values,"'".$value."'");
         }
         $column_string = implode(',', $columns);
         $value_string = implode(',', $values);
