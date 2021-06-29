@@ -1,6 +1,6 @@
 <?php
 
-require($_SERVER['DOCUMENT_ROOT'].'/cks-cartrack/configs/app.php');
+require($_SERVER['DOCUMENT_ROOT'].'/configs/app.php'); // server
 
 class DatabaseConnection extends AppConfig{
     const APP_CONFIG = null;

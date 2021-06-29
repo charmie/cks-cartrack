@@ -1,7 +1,5 @@
 <?php
 
-// define('DB_HOST', 'ec2-176-34-237-141.eu-west-1.compute.amazonaws.com');
-
 
 class AppConfig {
     protected const DB_HOST = 'ec2-176-34-237-141.eu-west-1.compute.amazonaws.com';
