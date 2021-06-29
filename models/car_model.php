@@ -22,14 +22,25 @@ class CarModel extends DatabaseConnection{
             echo "connect in";
             echo  "<br /><hr />";
             var_dump("yep here i am in true");
+            echo  "<br /><hr />";
             if($connect != false) {
                 echo "connect not false";
+                echo  "<br /><hr />";
                 $query = 'SELECT * FROM cars';
                 try{
+                    echo "start try";
+                    echo  "<br /><hr />";
                     $result = pg_query($this->DB_CONNECTION, $query);
+                    echo "end try";
+                    echo  "<br /><hr />";
                     $arr = pg_fetch_all($result);
+                    var_dump($arr);
+                    echo  "<br /><hr />";
                     // return pg_fetch_all($result);
                 } catch (Exception $e) {
+                    echo "oh no why am i here";
+                    echo  "<br /><hr />";
+                    var_dump($e);
                     return false;
                 }
             } else {
