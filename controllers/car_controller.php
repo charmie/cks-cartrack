@@ -1,9 +1,24 @@
 <?php
 
 class CarController extends CarModel{
+    private $car_model = null;
 
-    public function __construct(){}
+    public function __construct(){
+        $this->car_model = new CarModel();
+    }
     public function create(){
+        $new_values = array(
+            'id' => '000001',
+            'model_name' => 'Toyota Camry 2010',
+            'model_type' => 'Camry',
+            'model_brand' => 'Toyota',
+            'model_year' => '2010',
+            'model_date_added' => '',
+            'model_date_modified' => ''
+        );
+
+        $this->car_model->save($new_values);
+
         $data = array(
             'status' => 'SUCCESS',
             'message' => 'This is the create api'
@@ -12,25 +27,30 @@ class CarController extends CarModel{
     }
 
     public function read(){
+        $data = NULL;
+        if( $_SERVER['REQUEST_METHOD'] == 'GET') {
+            $result = $this->car_model->all();
 
-        var_dump($_SERVER['REQUEST_METHOD']);
-        echo "<br /><hr />";
-        $result = CarModel::all();
-
-        if($result != false) {
-            $data = array(
-                'data' => $result,
-                'status' => 'SUCCESS',
-                'message' => 'This is the read api'
-            );
+            if($result != false) {
+                $data = array(
+                    'data' => $result,
+                    'status' => 'SUCCESS',
+                    'message' => 'This is the read api'
+                );
+            } else {
+                $data = array(
+                    'status' => 'FAILED',
+                    'message' => 'This is the read api'
+                );
+            }
+            
         } else {
             $data = array(
                 'status' => 'FAILED',
-                'message' => 'This is the read api'
+                'message' => 'Method not allowed'
             );
         }
-        echo json_encode($data);
-        
+        echo json_encode($data);        
     }
 
     public function update(){

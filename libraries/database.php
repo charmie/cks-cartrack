@@ -2,7 +2,7 @@
 
 require($_SERVER['DOCUMENT_ROOT'].'/configs/app.php'); // server
 
-class DatabaseConnection extends AppConfig{
+class Database extends AppConfig{
     const APP_CONFIG = null;
     const DB_CONNECTION = null;
 
