@@ -6,6 +6,8 @@ class CarController extends CarModel{
     public function __construct(){
         $this->car_model = new CarModel();
     }
+    
+    // http://ec2-18-207-184-223.compute-1.amazonaws.com/api/car/create  
     public function create(){
         $new_values = array(
             'id' => '000001',
@@ -26,6 +28,7 @@ class CarController extends CarModel{
         echo json_encode($data);
     }
 
+    // http://ec2-18-207-184-223.compute-1.amazonaws.com/api/car/read
     public function read(){
         $data = NULL;
         if( $_SERVER['REQUEST_METHOD'] == 'GET') {
