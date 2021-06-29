@@ -1,6 +1,6 @@
 <?php
 
-require($_SERVER['DOCUMENT_ROOT'].'/PHP/cks-cartrack/libraries/db_connection.php');
+require($_SERVER['DOCUMENT_ROOT'].'/cks-cartrack/libraries/db_connection.php');
 // require(__DIR__.'/db_connection.php');
 
 class CarModel extends DatabaseConnection{
