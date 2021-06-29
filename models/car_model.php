@@ -13,6 +13,7 @@ class CarModel extends DatabaseConnection{
         var_dump("called model all()");
         $this->dbconnect = new DatabaseConnection();
         $connect = $this->dbconnect->connect();
+        var_dump($connect);
         if( $connect != false ) {
             var_dump("yep here i am in true");
             if($connect != false) {

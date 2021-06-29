@@ -17,6 +17,7 @@ class DatabaseConnection extends AppConfig{
                                         .' password='.AppConfig::DB_PASSWORD;
             pg_connect($connectivity_string);
         } catch (Exception $e) {
+            var_dump($e);
             return false;
         }
     }
