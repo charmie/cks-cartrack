@@ -31,7 +31,7 @@ class CarModel extends DatabaseConnection{
                 try{
                     echo "start try";
                     echo  "<br /><hr />";
-                    $result = pg_query($this->DB_CONNECTION, $query);
+                    $result = pg_query($connect, $query);
                     echo "end try";
                     echo  "<br /><hr />";
                     $arr = pg_fetch_all($result);
