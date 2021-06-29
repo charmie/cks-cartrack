@@ -20,7 +20,7 @@ class CarModel extends DatabaseConnection{
         echo "<br /><hr />";
         if( $connect != false ) {
             echo "connect in";
-            echo echo "<br /><hr />";
+            echo  "<br /><hr />";
             var_dump("yep here i am in true");
             if($connect != false) {
                 echo "connect not false"
