@@ -16,18 +16,10 @@ class CarController extends CarModel{
 
     public function read(){
         $result = CarModel::all();
-        
-        echo "Yow this is the result";
-        echo "<br /><hr />";
-        var_dump($result);
-        echo "<br /><hr />";
-        echo "The Type:";
-        echo "<br /><hr />";
-        var_dump(gettype($result));
 
         if($result != false) {
             $data = array(
-                'data' => $data,
+                'data' => $result,
                 'status' => 'SUCCESS',
                 'message' => 'This is the read api'
             );
@@ -37,7 +29,6 @@ class CarController extends CarModel{
                 'message' => 'This is the read api'
             );
         }
-        echo "<br /><hr />";
         echo json_encode($data);
         
     }
