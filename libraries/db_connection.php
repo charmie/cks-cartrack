@@ -11,10 +11,10 @@ class DatabaseConnection extends AppConfig{
     public function connect(){
         try {
             $connectivity_string = 'host='. AppConfig::DB_HOST
-                                        .'dbname='.AppConfig::DB_NAME
-                                        .'user='.AppConfig::DB_USER
-                                        .'sslmode='.AppConfig::SSL_MODE
-                                        .'password='.AppConfig::DB_PASSWORD;
+                                        .' dbname='.AppConfig::DB_NAME
+                                        .' user='.AppConfig::DB_USER
+                                        .' sslmode='.AppConfig::SSL_MODE
+                                        .' password='.AppConfig::DB_PASSWORD;
             echo "<br /><hr />";
             echo $connectivity_string;
             echo "<br /><hr />";
