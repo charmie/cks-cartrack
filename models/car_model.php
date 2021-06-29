@@ -17,8 +17,8 @@ class CarModel extends DatabaseConnection{
                     $result = pg_query($connect, $query);
                     $arr = pg_fetch_all($result);
                     echo "Nope it is not an exception";
-                    return true;
-                    // return pg_fetch_all($result);
+                    // return true;
+                    return $arr;
                 } catch (Exception $e) {
                     echo "Was it an exception tho?";
                     return false;

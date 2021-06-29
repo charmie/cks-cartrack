@@ -37,6 +37,7 @@ class CarController extends CarModel{
                 'message' => 'This is the read api'
             );
         }
+        echo "<br /><hr />";
         echo json_encode($data);
         
     }
