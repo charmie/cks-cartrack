@@ -1,11 +1,8 @@
 <?php
 
 class CarController extends CarModel{
-    const DB_CONNECTION = '';
 
-    public function __construct(){
-        //$this->DB_CONNECTION = new DatabaseConnection();
-    }
+    public function __construct(){}
     public function create(){
         $data = array(
             'status' => 'SUCCESS',
@@ -15,6 +12,9 @@ class CarController extends CarModel{
     }
 
     public function read(){
+
+        var_dump($_SERVER['REQUEST_METHOD']);
+        echo "<br /><hr />";
         $result = CarModel::all();
 
         if($result != false) {
