@@ -49,7 +49,7 @@ if ($url == '/')
         $viewName       = ucfirst($requestedController).'View';
 
         $controllerObj  = new $controllerName( new $modelName );
-        print $controllerObj->$requestedAction();
+        print $controllerObj->$requestedAction($requestedParams);
 
         
 

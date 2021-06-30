@@ -14,15 +14,34 @@ class SetupController {
     public function setup_database(){
         $stat = pg_connection_status($this->DB_CONNECTION);
         if ($stat === PGSQL_CONNECTION_OK) {
-            $delete = $this->delete_schema();
-            if( $delete ){
-                $this->create_schema();
-            }
+            //$this->create_schema();
+             $this->check_data();
+
         } else {
             echo 'Connection status bad';
-        }    
+        }
     }
 
+    private function check_data(){
+        /*$query = "SELECT *
+        FROM pg_catalog.pg_tables
+        WHERE schemaname != 'pg_catalog' AND 
+            schemaname != 'information_schema'"; */
+        $query = 'SELECT * FROM cars';
+
+        $result = pg_query($this->DB_CONNECTION, $query);
+        // var_dump($result);
+        $arr = pg_fetch_all($result);
+        foreach( $arr as $data) {
+            // var_dump($data) . "<br />";
+        }
+        $json = json_encode($arr);
+
+        echo $json;
+
+    }
+
+    /*
     private function create_schema(){
         $query = 'CREATE SCHEMA cks_exam1';
         try {
@@ -31,31 +50,29 @@ class SetupController {
             if (!$result) {
                 echo "DB Already exists.\n";
             }
-
-            $arr = pg_fetch_array($result, 0, PGSQL_NUM);
-            var_dump($arr);
-            $searchDB = array_search('cks_exam1', $arr);
-            echo "-------------------------------------------";
-            var_dump*($searchDB);
+            return true;
             
         } catch (Exception $e) {
             echo json_encode('An error occurred');
             return false;
-        }
-        
-
-        
+        }       
+        echo "Did i still reach here?"; 
     }
-
+   
     private function delete_schema(){
         $query = 'SELECT datname FROM pg_database';
         try {
             $result = pg_query($this->DB_CONNECTION, $query);
+            $arr = pg_fetch_all($result);
+            foreach( $arr as $db) {
+                echo $db['datname']
+            }
+
             if (!$result) {
                 echo "An error occurred.\n";
-                exit;
+                return false;
             }
-            var_dump(gettype($result));
+            
             return true;
 
         } catch (Exception $e) {
@@ -63,4 +80,5 @@ class SetupController {
             return false;
         }
     }
+    */
 }
