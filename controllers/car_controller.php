@@ -41,18 +41,17 @@ class CarController extends CarModel{
         $keys = array_keys($_data);
         foreach(CarModel::table_columns as $field){
             $test = array_search($field, $keys);
-            echo "FIELD: ".$field. ' = '.$test;
-            if($test != false) {
-                echo "<br /><hr />";
+                echo "\n";
                 echo $field;
                 $valid_fields_counter++;
             }
         }
-
-        echo "FIELDS COUNTER: ".$fields_counter;
+        /*
+        echo " FIELDS COUNTER: ".$fields_counter;
         echo "<br /><hr />";
-        echo "VALID FIELDS: ".$valid_fields_counter;
+        echo " VALID FIELDS: ".$valid_fields_counter;
         echo "<br /><hr />";
+        */
 
         if($fields_counter == $valid_fields_counter) {
             echo "ALL REQUIRED FIELDS ARE IN HERE";
