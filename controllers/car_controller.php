@@ -60,7 +60,7 @@ class CarController extends CarModel{
             $test = array_search($field, $keys);
             echo $field. ' = '.$test;
             echo "<br /><hr />";
-            if($test != false) {
+            if($test !== false) {
                 echo "\n";
                 echo 'OK - '.$field;
                 echo "<br /><hr />";
