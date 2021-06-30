@@ -14,8 +14,8 @@ class CarController extends CarModel{
 
             $new_values = json_decode(file_get_contents('php://input'), true);
             $validate = $this->validate($new_values);
-            /*
-            $this->car_model->save($new_values);
+            
+            //$this->car_model->save($new_values);
     
             $data = array(
                 'status' => 'SUCCESS',
@@ -30,7 +30,8 @@ class CarController extends CarModel{
         }
 
         echo json_encode($data);
-        */
+        
+    
         
     }
 
