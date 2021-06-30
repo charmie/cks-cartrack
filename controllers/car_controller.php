@@ -40,7 +40,8 @@ class CarController extends CarModel{
         $fields_counter = count(CarModel::table_columns);
         $keys = array_keys($_data);
         foreach(CarModel::table_columns as $field){
-            $test = array_search('$field', $keys);
+            $test = array_search($field, $keys);
+            echo "FIELD: ".$field. ' = '.$test;
             if($test != false) {
                 $valid_fields_counter++;
             }
