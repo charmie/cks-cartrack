@@ -10,7 +10,7 @@ class CarController extends CarModel{
     // http://ec2-18-207-184-223.compute-1.amazonaws.com/api/car/create  
     public function create() {
         $data = array ();
-        if( $_SERVER['REQUEST_METHOD'] == 'GET') {
+        if( $_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $new_values = json_decode(file_get_contents('php://input'), true);
             // $new_values = '{
@@ -21,7 +21,7 @@ class CarController extends CarModel{
             //     "model_date_added" : "",
             //     "model_date_modified": ""
             //     }';
-            
+
             $new_values = json_decode($new_values);
             $new_values = (array) $new_values;
             $validate = $this->validate($new_values);
