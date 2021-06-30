@@ -49,6 +49,12 @@ class CarController extends CarModel{
         $valid_fields_counter = 0;
         $fields_counter = count(CarModel::table_columns);
         $keys = array_keys($_data);
+        echo "KEYS";
+        echo "<br /><hr />";
+        foreach($keys as $key) {
+            echo $key;
+            echo "<br /><hr />";
+        }
         foreach(CarModel::table_columns as $field){
             echo $field;
             echo "<br /><hr />";
