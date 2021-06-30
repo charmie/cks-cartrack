@@ -85,7 +85,7 @@ class CarModel extends Database{
         try {
             echo "entered try ------ ";
             // $query = 'UPDATE ' . $this->table . ' set ' . $set_string . ' WHERE id = '. $id;
-            $query = "UPDATE cars set id='57',model_name='Edit Tesla Model X 2021',model_type='Edit Model X',model_brand='Edit Tesla Motors',model_year='Edit 2021',model_date_added='',model_date_modified='2021-06-30 16:34:40' WHERE id = 57";
+            $query = "UPDATE cars set model_name='Edit Tesla Model X 2021',model_type='Edit Model X',model_brand='Edit Tesla Motors',model_year='Edit 2021',model_date_added='',model_date_modified=now() WHERE id = 57";
             $connect = $this->dbc->connect();
             $result = pg_query($connect, $query);
 
