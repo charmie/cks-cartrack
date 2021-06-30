@@ -11,17 +11,7 @@ class CarController extends CarModel{
     public function create() {
         $data = array ();
         if( $_SERVER['REQUEST_METHOD'] == 'POST') {
-
             $new_values = json_decode(file_get_contents('php://input'), true);
-            // $new_values = '{
-            //     "model_name": "Toyota Innova 2015",
-            //     "model_type": "Innova",
-            //     "model_brand": "Toyota",
-            //     "model_year": "2015",
-            //     "model_date_added" : "",
-            //     "model_date_modified": ""
-            //     }';
-
             $validate = $this->validate($new_values);
             if($validate) {
                 $save = $this->car_model->save($new_values);
@@ -42,7 +32,6 @@ class CarController extends CarModel{
                     'message' => 'Please complete all fields.'
                 );
             }
-            
         } else {
             $data = array(
                 'status' => 'FAILED',
@@ -56,21 +45,13 @@ class CarController extends CarModel{
         $valid_fields_counter = 0;
         $fields_counter = count(CarModel::table_columns);
         $keys = array_keys($_data);
-        var_dump($keys);
-        echo "<br /><hr />";
         foreach(CarModel::table_columns as $field){
             $test = array_search($field, $keys);
-            echo $field . ' = '.$test;
-            echo "<br /><hr />";
             if($test !== false) {
                 
                 $valid_fields_counter++;
             }
         }
-        echo '$fields_counter = ' . $fields_counter;
-        echo "<br /><hr />";
-        echo '$valid_fields_counter = ' . $valid_fields_counter;
-        echo "<br /><hr />";
         if($fields_counter == $valid_fields_counter) {
             return true;
         } else {
@@ -107,11 +88,49 @@ class CarController extends CarModel{
     }
 
     public function update(){
-        $data = array(
-            'status' => 'SUCCESS',
-            'message' => 'This is the update api'
-        );
+        $data = array();
+        if( $_SERVER['REQUEST_METHOD'] == 'PUT') {
+            $update_values = json_decode(file_get_contents('php://input'), true);
+            $validate = $this->validate_update($update_values);
+            if($validate) {
+                $this->car_model->modify($update_values);
+                // $data = array(
+                //     'status' => 'SUCCESS',
+                //     'message' => 'This is the update api'
+                // );
+            } else {
+                $data = array(
+                    'status' => 'FAILED',
+                    'message' => 'Unexisting column identified.'
+                );
+            }
+            
+        } else {
+            $data = array(
+                'status' => 'FAILED',
+                'message' => 'Method not allowed'
+            );
+        }
+
+        
         echo json_encode($data);
+    }
+
+    public function validate_update($_data) {
+        $keys = array_keys($_data);
+        $columns = CarModel::table_columns;
+        if(array_search("id", $keys) === false){
+            return false;
+        } else {
+            array_push($columns,'id');
+            foreach($keys as $key) {
+                $test = array_search($key, $columns);
+                if($test === false) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public function delete(){

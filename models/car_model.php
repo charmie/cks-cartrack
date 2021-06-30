@@ -59,5 +59,40 @@ class CarModel extends Database{
         }
     }
 
+    public function modify($_data){
+        echo "what?";
+        $columns = array();
+        $values = array();
+        $id = 0;
+        $set_string = array();
+        foreach($_data as $key => $value) {
+            if($key === 'id') {
+                $id = $value;
+            }
+
+            if($key == 'model_date_modified') {
+                $date_string = date('Y-m-d H:i:s');
+                $value = $date_string;
+            }
+
+            array_push($set_string, $key."='".$value."'");
+        }
+        $set_string = implode(',', $set_string);
+        
+        try {
+            echo "entered try ------ ";
+            $query = 'UPDATE ' . $this->table .  $set_string . 'WHERE id = '. $id;
+            echo $query;
+
+            $connect = $this->dbc->connect();
+            $result = pg_query($connect, $query);
+
+            var_dump($result);
+            return true;    
+        } catch(Exception $e) {
+            return false;
+        }
+    }
+
 
 }
