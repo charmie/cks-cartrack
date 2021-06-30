@@ -41,7 +41,7 @@ class CarModel extends Database{
             array_push($columns,$key);
             if($key == 'model_date_added' || $key == 'model_date_modified') {
                 // to_timestamp('09/03/1943 01:00:00 MWT', 'DD/MM/YYYY hh24:mi:ss')   
-                $date_string = to_timestamp(date('Y-m-d H:i:s'),'YYYY-MM-DD hh24:mi:ss');
+                $date_string = date('Y-m-d H:i:s');
                 $value = $date_string;
             }
             array_push($values,"'".$value."'");
