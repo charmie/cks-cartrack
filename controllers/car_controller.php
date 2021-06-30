@@ -111,8 +111,6 @@ class CarController extends CarModel{
                 'message' => 'Method not allowed'
             );
         }
-
-        
         echo json_encode($data);
     }
 
@@ -147,9 +145,7 @@ class CarController extends CarModel{
                 'status' => 'FAILED',
                 'message' => 'Method not allowed'
             );
-        }
-    
-       
+        }   
         echo json_encode($data);
     }
 }
