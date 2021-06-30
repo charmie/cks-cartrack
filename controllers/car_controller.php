@@ -13,7 +13,8 @@ class CarController extends CarModel{
         if( $_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $new_values = json_decode(file_get_contents('php://input'), true);
-    
+            $validate = $this->validate($new_values);
+            /*
             $this->car_model->save($new_values);
     
             $data = array(
@@ -29,7 +30,26 @@ class CarController extends CarModel{
         }
 
         echo json_encode($data);
+        */
         
+    }
+
+    private function validate($_data) {
+        $valid_fields_counter = 0;
+        $fields_counter = count(CarModel::table_column);
+        $keys = array_keys($_data);
+        foreach(CarModel::table_column as $field){
+            $test = array_search('$field', $keys);
+            if($test != false) {
+                $valid_fields_counter++;
+            }
+        }
+
+        if($fields_counter == $valid_fields_counter) {
+            echo "ALL REQUIRED FIELDS ARE IN HERE";
+        } else {
+            echo "PLEASE FILL UP ALL REQUIRED FIELDS";
+        }
     }
 
     // http://ec2-18-207-184-223.compute-1.amazonaws.com/api/car/read

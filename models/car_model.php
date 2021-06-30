@@ -4,6 +4,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/libraries/database.php');
 
 class CarModel extends Database{
 
+    const table_columns = array('model_name','model_type','model_brand','model_year,','model_date_added','model_date_modified');
     private $id, $model_name, $model_type, $model_brand, $model_year, $model_date_added, $model_date_modified;
     private $table = 'cars';
     
@@ -40,7 +41,6 @@ class CarModel extends Database{
         foreach($_data as $key => $value) {
             array_push($columns,$key);
             if($key == 'model_date_added' || $key == 'model_date_modified') {
-                // to_timestamp('09/03/1943 01:00:00 MWT', 'DD/MM/YYYY hh24:mi:ss')   
                 $date_string = date('Y-m-d H:i:s');
                 $value = $date_string;
             }
