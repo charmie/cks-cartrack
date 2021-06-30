@@ -81,8 +81,9 @@ class CarModel extends Database{
         
         try {
             echo "entered try ------ ";
-            $query = 'UPDATE ' . $this->table .  $set_string . 'WHERE id = '. $id;
+            $query = 'UPDATE ' . $this->table . ' set ' . $set_string . 'WHERE id = '. $id;
             echo $query;
+            exit;
 
             $connect = $this->dbc->connect();
             $result = pg_query($connect, $query);
