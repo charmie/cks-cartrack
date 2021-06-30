@@ -21,7 +21,7 @@ class CarController extends CarModel{
             //     "model_date_added" : "",
             //     "model_date_modified": ""
             //     }';
-            $new_values = json_decode(json_encode($new_values));
+
             $validate = $this->validate($new_values);
             if($validate) {
                 $save = $this->car_model->save($new_values);
