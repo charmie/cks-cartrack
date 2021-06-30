@@ -136,7 +136,7 @@ class CarController extends CarModel{
     public function delete($id){
         $data = array();
         if( $_SERVER['REQUEST_METHOD'] == 'DELETE') {
-            $this->car_model->destroy($id);
+            $this->car_model->destroy($id[0]);
             $data = array(
                 'status' => 'Success',
                 'message' => 'This is the delete api'
