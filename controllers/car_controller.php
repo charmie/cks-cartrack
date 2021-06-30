@@ -44,6 +44,7 @@ class CarController extends CarModel{
                     'message' => 'Please complete all fields.'
                 );
             }
+            
         } else {
             $data = array(
                 'status' => 'FAILED',
@@ -57,9 +58,14 @@ class CarController extends CarModel{
         $valid_fields_counter = 0;
         $fields_counter = count(CarModel::table_columns);
         $keys = array_keys($_data);
+        var_dump($keys);
+        echo "<br /><hr />";
         foreach(CarModel::table_columns as $field){
             $test = array_search($field, $keys);
+            echo $field . ' = '.$test;
+            echo "<br /><hr />";
             if($test !== false) {
+                
                 $valid_fields_counter++;
             }
         }
@@ -67,7 +73,6 @@ class CarController extends CarModel{
         echo "<br /><hr />";
         echo '$valid_fields_counter = ' . $valid_fields_counter;
         echo "<br /><hr />";
-        
         if($fields_counter == $valid_fields_counter) {
             return true;
         } else {
