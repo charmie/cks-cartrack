@@ -25,11 +25,25 @@ class CarController extends CarModel{
             $new_values = json_decode($new_values);
             $new_values = (array) $new_values;
             $validate = $this->validate($new_values);
-
-            $data = array(
-                'status' => 'SUCCESS',
-                'message' => 'This is the create api'
-            );
+            if($valdate) {
+                $save = $this->car_model->save($new_values);
+                if ($save) {
+                    $data = array(
+                        'status' => 'SUCCESS',
+                        'message' => 'This is the create api'
+                    );
+                } else {
+                    $data = array(
+                        'status' => 'FAILED',
+                        'message' => 'Something went wrong. Please contact system administrator.'
+                    );
+                }
+            } else {
+                $data = array(
+                    'status' => 'FAILED',
+                    'message' => 'Please complete all fields.'
+                );
+            }
             
         } else {
             $data = array(
@@ -37,6 +51,7 @@ class CarController extends CarModel{
                 'message' => 'Method not allowed'
             );
         }   
+        echo json_encode($data);
     }
 
     public function validate($_data) {

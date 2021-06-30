@@ -48,17 +48,15 @@ class CarModel extends Database{
         }
         $column_string = implode(',', $columns);
         $value_string = implode(',', $values);
-        echo $column_string;
-        echo "<br /><br /><hr />";
-        echo $value_string;
-        echo "<br /><br /><hr />";
 
-        $query = 'INSERT INTO ' . $this->table . '(' . $column_string . ') VALUES(' . $value_string . ')';
-        $connect = $this->dbc->connect();
-        $result = pg_query($connect, $query);
-        var_dump($result);
-        echo "<br /><br /><hr />";
-
+        try {
+            $query = 'INSERT INTO ' . $this->table . '(' . $column_string . ') VALUES(' . $value_string . ')';
+            $connect = $this->dbc->connect();
+            $result = pg_query($connect, $query);
+            return true;    
+        } catch(Exception $e) {
+            return false;
+        }
     }
 
 
