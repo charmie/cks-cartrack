@@ -43,6 +43,8 @@ class CarController extends CarModel{
             $test = array_search($field, $keys);
             echo "FIELD: ".$field. ' = '.$test;
             if($test != false) {
+                echo "<br /><hr />";
+                echo $field;
                 $valid_fields_counter++;
             }
         }
