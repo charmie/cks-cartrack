@@ -56,11 +56,10 @@ class CarController extends CarModel{
             echo "<br /><hr />";
         }
         foreach(CarModel::table_columns as $field){
-            echo $field;
-            echo "<br /><hr />";
             
             $test = array_search($field, $keys);
-            
+            echo $field. ' = '.$test;
+            echo "<br /><hr />";
             if($test != false) {
                 echo "\n";
                 echo 'OK - '.$field;
