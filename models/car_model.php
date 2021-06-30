@@ -51,6 +51,7 @@ class CarModel extends Database{
 
         try {
             $query = 'INSERT INTO ' . $this->table . '(' . $column_string . ') VALUES(' . $value_string . ')';
+            echo $query; exit;
             $connect = $this->dbc->connect();
             $result = pg_query($connect, $query);
             return true;    
