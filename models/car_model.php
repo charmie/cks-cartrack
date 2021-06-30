@@ -69,27 +69,14 @@ class CarModel extends Database{
         foreach($_data as $key => $value) {
             if($key === 'id') {
                 $id = $value;
-            }
-
-            if($key == 'model_date_modified') {
-                $value = date('Y-m-d H:i:s');
-                array_push($set_string, $key."='".$value."'");
-            } else{
-                array_push($set_string, $key."='".$value."'");
-            }
-
-            
+            }            
         }
         $set_string = implode(',', $set_string);
         
         try {
-            echo "entered try ------ ";
-            // $query = 'UPDATE ' . $this->table . ' set ' . $set_string . ' WHERE id = '. $id;
-            $query = "UPDATE cars set model_name='Test X',model_type='Test X',model_brand='Edit',model_year='2000' WHERE id = 57";
+            $query = 'UPDATE ' . $this->table . ' set ' . $set_string . ' WHERE id = '. $id;
             $connect = $this->dbc->connect();
             $result = pg_query($connect, $query);
-
-            var_dump($result);
             return true;    
         } catch(Exception $e) {
             return false;

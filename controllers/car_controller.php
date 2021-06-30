@@ -94,10 +94,10 @@ class CarController extends CarModel{
             $validate = $this->validate_update($update_values);
             if($validate) {
                 $this->car_model->modify($update_values);
-                // $data = array(
-                //     'status' => 'SUCCESS',
-                //     'message' => 'This is the update api'
-                // );
+                $data = array(
+                    'status' => 'SUCCESS',
+                    'message' => 'This is the update api'
+                );
             } else {
                 $data = array(
                     'status' => 'FAILED',
