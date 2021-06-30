@@ -51,7 +51,6 @@ class CarModel extends Database{
 
         try {
             $query = 'INSERT INTO ' . $this->table . '(' . $column_string . ') VALUES(' . $value_string . ')';
-            echo $query; exit;
             $connect = $this->dbc->connect();
             $result = pg_query($connect, $query);
             return true;    
@@ -73,7 +72,6 @@ class CarModel extends Database{
             array_push($set_string, $key."='".$value."'");
         }
         $set_string = implode(',', $set_string);
-        
         try {
             
             $query = 'UPDATE ' . $this->table . ' set ' . $set_string . ' WHERE id = '. $id;
