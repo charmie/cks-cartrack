@@ -73,7 +73,7 @@ class CarModel extends Database{
 
             if($key == 'model_date_modified') {
                 $value = date('Y-m-d H:i:s');
-                array_push($set_string, $key."=now()");
+                array_push($set_string, $key."='".$value."'");
             } else{
                 array_push($set_string, $key."='".$value."'");
             }
@@ -84,7 +84,8 @@ class CarModel extends Database{
         
         try {
             echo "entered try ------ ";
-            $query = 'UPDATE ' . $this->table . ' set ' . $set_string . ' WHERE id = '. $id;
+            // $query = 'UPDATE ' . $this->table . ' set ' . $set_string . ' WHERE id = '. $id;
+            $query = "UPDATE cars set id='57',model_name='Edit Tesla Model X 2021',model_type='Edit Model X',model_brand='Edit Tesla Motors',model_year='Edit 2021',model_date_added='',model_date_modified='2021-06-30 16:34:40' WHERE id = 57";
             $connect = $this->dbc->connect();
             $result = pg_query($connect, $query);
 
