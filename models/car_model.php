@@ -5,7 +5,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/libraries/database.php');
 class CarModel extends Database{
 
     const table_columns = array('model_name','model_type','model_brand','model_year,','model_date_added','model_date_modified');
-    private $id, $model_name, $model_type, $model_brand, $model_year, $model_date_added, $model_date_modified;
+    private $model_name, $model_type, $model_brand, $model_year, $model_date_added, $model_date_modified;
     private $table = 'cars';
     
     public $dbc = null;
