@@ -46,6 +46,11 @@ class CarController extends CarModel{
             }
         }
 
+        echo "FIELDS COUNTER: ".$fields_counter;
+        echo "<br /><hr />";
+        echo "VALID FIELDS: ".$valid_fields_counter;
+        echo "<br /><hr />";
+
         if($fields_counter == $valid_fields_counter) {
             echo "ALL REQUIRED FIELDS ARE IN HERE";
         } else {
