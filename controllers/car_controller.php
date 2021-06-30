@@ -10,9 +10,20 @@ class CarController extends CarModel{
     // http://ec2-18-207-184-223.compute-1.amazonaws.com/api/car/create  
     public function create() {
         $data = array ();
-        if( $_SERVER['REQUEST_METHOD'] == 'POST') {
+        if( $_SERVER['REQUEST_METHOD'] == 'GET') {
 
-            $new_values = json_decode(file_get_contents('php://input'), true);
+            // $new_values = json_decode(file_get_contents('php://input'), true);
+            $new_values = '{
+                "model_name": "Toyota Innova 2015",
+                "model_type": "Innova",
+                "model_brand": "Toyota",
+                "model_year": "2015",
+                "model_date_added" : "",
+                "model_date_modified": ""
+              }';
+              $new_values = json_decode($new_values);
+              $new_values = (array) $new_values;
+              var_dump($new_values);
             $validate = $this->validate($new_values);
             
             //$this->car_model->save($new_values);
@@ -41,6 +52,8 @@ class CarController extends CarModel{
         $keys = array_keys($_data);
         foreach(CarModel::table_columns as $field){
             $test = array_search($field, $keys);
+            
+            if($test != false) {
                 echo "\n";
                 echo $field;
                 $valid_fields_counter++;
