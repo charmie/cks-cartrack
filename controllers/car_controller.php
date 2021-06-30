@@ -40,7 +40,7 @@ class CarController extends CarModel{
             );
         }
 
-        echo json_encode($data);
+        // echo json_encode($data);
         
     
         
@@ -51,6 +51,9 @@ class CarController extends CarModel{
         $fields_counter = count(CarModel::table_columns);
         $keys = array_keys($_data);
         foreach(CarModel::table_columns as $field){
+            echo $field;
+            echo "<br /><hr />";
+            /*
             $test = array_search($field, $keys);
             
             if($test != false) {
@@ -58,6 +61,7 @@ class CarController extends CarModel{
                 echo $field;
                 $valid_fields_counter++;
             }
+            */
         }
         /*
         echo " FIELDS COUNTER: ".$fields_counter;
