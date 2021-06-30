@@ -61,6 +61,7 @@ class CarModel extends Database{
     }
 
     public function modify($_data){
+        echo "what?";
         $columns = array();
         $values = array();
         $id = 0;
@@ -68,14 +69,15 @@ class CarModel extends Database{
         foreach($_data as $key => $value) {
             if($key === 'id') {
                 $id = $value;
-            }            
+            }
+            array_push($set_string, $key."='".$value."'");
         }
         $set_string = implode(',', $set_string);
         
         try {
+            
             $query = 'UPDATE ' . $this->table . ' set ' . $set_string . ' WHERE id = '. $id;
             echo $query;
-            exit;
             $connect = $this->dbc->connect();
             $result = pg_query($connect, $query);
             return true;    
