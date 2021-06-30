@@ -37,9 +37,9 @@ class CarController extends CarModel{
 
     public function validate($_data) {
         $valid_fields_counter = 0;
-        $fields_counter = count(CarModel::table_column);
+        $fields_counter = count(CarModel::table_columns);
         $keys = array_keys($_data);
-        foreach(CarModel::table_column as $field){
+        foreach(CarModel::table_columns as $field){
             $test = array_search('$field', $keys);
             if($test != false) {
                 $valid_fields_counter++;
