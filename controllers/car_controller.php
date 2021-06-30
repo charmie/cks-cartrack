@@ -23,7 +23,6 @@ class CarController extends CarModel{
               }';
               $new_values = json_decode($new_values);
               $new_values = (array) $new_values;
-              var_dump($new_values);
             $validate = $this->validate($new_values);
             
             //$this->car_model->save($new_values);
@@ -53,15 +52,16 @@ class CarController extends CarModel{
         foreach(CarModel::table_columns as $field){
             echo $field;
             echo "<br /><hr />";
-            /*
+            
             $test = array_search($field, $keys);
             
             if($test != false) {
                 echo "\n";
-                echo $field;
+                echo 'OK - '.$field;
+                echo "<br /><hr />";
                 $valid_fields_counter++;
             }
-            */
+            
         }
         /*
         echo " FIELDS COUNTER: ".$fields_counter;
@@ -75,6 +75,7 @@ class CarController extends CarModel{
         } else {
             echo "PLEASE FILL UP ALL REQUIRED FIELDS";
         }
+        echo "<br /><hr />";
     }
 
     // http://ec2-18-207-184-223.compute-1.amazonaws.com/api/car/read
