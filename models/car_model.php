@@ -72,9 +72,7 @@ class CarModel extends Database{
             }
 
             if($key == 'model_date_modified') {
-                // $date_string = date('Y-m-d H:i:s');
-                $date = now();
-                $value = $date_string;
+                $value = date('Y-m-d H:i:s');
             }
 
             array_push($set_string, $key."='".$value."'");
