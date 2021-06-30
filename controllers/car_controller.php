@@ -25,7 +25,7 @@ class CarController extends CarModel{
             $new_values = json_decode($new_values);
             $new_values = (array) $new_values;
             $validate = $this->validate($new_values);
-            if($valdate) {
+            if($validate) {
                 $save = $this->car_model->save($new_values);
                 if ($save) {
                     $data = array(
