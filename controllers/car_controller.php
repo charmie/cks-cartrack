@@ -34,7 +34,7 @@ class CarController extends CarModel{
         
     }
 
-    private function validate($_data) {
+    public function validate($_data) {
         $valid_fields_counter = 0;
         $fields_counter = count(CarModel::table_column);
         $keys = array_keys($_data);
