@@ -133,11 +133,23 @@ class CarController extends CarModel{
         return true;
     }
 
-    public function delete(){
-        $data = array(
-            'status' => 'SUCCESS',
-            'message' => 'This is the delete api'
-        );
+    public function delete($id){
+        $data = array();
+        if( $_SERVER['REQUEST_METHOD'] == 'DELETE') {
+            $this->car_model->destroy($id);
+            $data = array(
+                'status' => 'Success',
+                'message' => 'This is the delete api'
+            );
+            
+        } else {
+            $data = array(
+                'status' => 'FAILED',
+                'message' => 'Method not allowed'
+            );
+        }
+    
+       
         echo json_encode($data);
     }
 }

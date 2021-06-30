@@ -60,7 +60,6 @@ class CarModel extends Database{
     }
 
     public function modify($_data){
-        echo "what?";
         $columns = array();
         $values = array();
         $id = 0;
@@ -73,9 +72,18 @@ class CarModel extends Database{
         }
         $set_string = implode(',', $set_string);
         try {
-            
             $query = 'UPDATE ' . $this->table . ' set ' . $set_string . ' WHERE id = '. $id;
-            echo $query;
+            $connect = $this->dbc->connect();
+            $result = pg_query($connect, $query);
+            return true;    
+        } catch(Exception $e) {
+            return false;
+        }
+    }
+
+    public function destroy($_id){
+        try {
+            $query = 'DELETE from ' . $this->table . ' WHERE id=' . $_id;
             $connect = $this->dbc->connect();
             $result = pg_query($connect, $query);
             return true;    
