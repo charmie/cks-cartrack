@@ -92,5 +92,21 @@ class CarModel extends Database{
         }
     }
 
+    public function find($_params){
+        $like_statements = array();
+        foreach($_params as $key => $value) { 
+            $like_string =  $key . " LIKE '%" . $value . "%' " ;
+            array_push($like_statements, $like_string);
+        }
+        $value_string = implode('AND ', $like_statements);
+        $query = 'SELECT * FROM '. $this->table . ' WHERE ' . $value_string;
+        echo $value_string;
+        echo "<br /><hr />";
+        $connect = $this->dbc->connect();
+        $result = pg_query($connect, $query);
+        $arr = pg_fetch_all($result);
+        var_dump($arr);
+    }
+
 
 }

@@ -148,4 +148,47 @@ class CarController extends CarModel{
         }   
         echo json_encode($data);
     }
+
+    public function search(){
+        
+        if( $_SERVER['REQUEST_METHOD'] == 'GET') { 
+            if(empty($_GET)){
+                $data = array(
+                    'status' => 'FAILED',
+                    'message' => 'Please enter query string in URL param'
+                );
+            } else {
+                $is_valid_fields = true;
+                foreach($_GET as $key => $value) {
+                    $is_valid_field = array_search($key,CarModel::table_columns);
+                    if($is_valid_field === false) {
+                        $data = array(
+                            'status' => 'Failed',
+                            'message' => 'Invalid search key(s)'
+                        );
+                        $is_valid_fields = false;
+                        break;    
+                    }
+                    
+                }
+                
+                if($is_valid_fields) {
+                    $this->car_model->find($_GET);
+                    $data = array(
+                        'status' => 'Success',
+                        'message' => 'This is the search api'
+                    );
+                }
+            }
+            
+        } else {
+            $data = array(
+                'status' => 'FAILED',
+                'message' => 'Method not allowed'
+            );
+        } 
+        echo json_encode($data);
+    }
+
+    
 }
