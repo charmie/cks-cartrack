@@ -95,7 +95,7 @@ class CarModel extends Database{
     public function find($_params){
         $like_statements = array();
         foreach($_params as $key => $value) { 
-            $like_string =  $key . " LIKE '%" . $value . "%' " ;
+            $like_string =  $key . " ILIKE '%" . $value . "%' " ;
             array_push($like_statements, $like_string);
         }
         $value_string = implode('AND ', $like_statements);
