@@ -104,7 +104,7 @@ class CarModel extends Database{
             $connect = $this->dbc->connect();
             $result = pg_query($connect, $query);
             $arr = pg_fetch_all($result);
-            return $arr
+            return $arr;
         } catch(Exception $e) {
             return false;
         }
