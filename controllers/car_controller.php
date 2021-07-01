@@ -74,11 +74,7 @@ class CarController extends CarModel{
             } else {
                 $data = array(
                     'status' => 'FAILED',
-<<<<<<< HEAD
                     'message' => 'Unable to get data'
-=======
-                    'message' => 'This is the read api'
->>>>>>> 87f7a069079d6400e11ee20d4eb6843cb201d5a8
                 );
             }
             
