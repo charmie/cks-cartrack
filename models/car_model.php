@@ -99,13 +99,16 @@ class CarModel extends Database{
             array_push($like_statements, $like_string);
         }
         $value_string = implode('AND ', $like_statements);
-        $query = 'SELECT * FROM '. $this->table . ' WHERE ' . $value_string;
-        echo $value_string;
-        echo "<br /><hr />";
-        $connect = $this->dbc->connect();
-        $result = pg_query($connect, $query);
-        $arr = pg_fetch_all($result);
-        var_dump($arr);
+        try{
+            $query = 'SELECT * FROM '. $this->table . ' WHERE ' . $value_string;
+            $connect = $this->dbc->connect();
+            $result = pg_query($connect, $query);
+            $arr = pg_fetch_all($result);
+            return $arr
+        } catch(Exception $e) {
+            return false;
+        }
+        
     }
 
 
