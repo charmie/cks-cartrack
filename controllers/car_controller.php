@@ -175,7 +175,7 @@ class CarController extends CarModel{
                 if($is_valid_fields) {
                     $search_result = $this->car_model->find($_GET);
                     $data = array(
-                        'data' = > $search_result,
+                        'data' => $search_result,
                         'status' => 'Success',
                         'message' => 'This is the search api'
                     );
